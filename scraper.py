@@ -10,11 +10,20 @@ import io
 if sys.platform.startswith('win'):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-TARGET_COUNT = 50
+TARGET_COUNT = 240
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 
+# Kata kunci untuk menyaring aksesoris, komponen PC, tablet, dll.
+IGNORE_KEYWORDS = [
+    "adapter", "adaptor", "tas ", "sleeve", "mouse", "keyboard", "charger", "kabel", "power bank", 
+    "backpack", "universal", "tinta", "cartridge", "headset", "headphone", "earphone", "proyektor", 
+    "projector", "ram memory", "ssd storage", "flashdisk", "vga", "sodimm", "kingston", "fury impact", 
+    "crucial", "corsair", "lexar", "adata", "samsung 9", "gigabyte vga", "msi vga", "asus vga", 
+    "rog ally", "lenovo legion go", "nintendo", "playstation", "xbox", "gamepad", "joystick", 
+    "tablet", "tab ", "ipad", "monitor", "display", "screen"
+]
+
 def clean_name(title):
-    # Pisahkan judul sebelum kata kunci processor untuk mendapat merek dan tipe saja
     m = re.search(r'\b(Intel|AMD|Ryzen|Core|Celeron|Pentium|Athlon|N100|N150|N200|N300|N305|N355|Ultra)\b', title, re.I)
     name = title[:m.start()].strip() if m else " ".join(title.split()[:5])
     return re.sub(r'[\s\-\–\—\[\(\{]+$', '', name).strip()
@@ -26,16 +35,13 @@ def clean_price(price_str):
     return int(digits) if digits else 0
 
 def estimate_battery(battery_str, title):
-    # Cari durasi langsung (misal 'up to 8 hours' -> 8)
     m_hours = re.search(r'(\d+(?:\.\d+)?)\s*(?:jam|hour|hr|s\b)', battery_str, re.I)
     if m_hours:
         return float(m_hours.group(1))
     
-    # Cari nilai Wh
     m_wh = re.search(r'(\d+)\s*(?:Wh|wh)', battery_str)
     wh = float(m_wh.group(1)) if m_wh else None
     
-    # Deteksi tipe laptop gaming/performa tinggi
     t_low = title.lower()
     is_gaming = any(x in t_low for x in ["rtx", "gtx", "gaming", "rog", "tuf", "loq", "legion", "victus", "nitro"]) or re.search(r'\b\d{4}h[sx]?\b', t_low)
     
@@ -53,9 +59,8 @@ def main():
     product_links = []
     page = 1
     
-    # Langkah 1: Kumpulkan link produk laptop valid
     print("\n[1] Mengumpulkan link produk dari katalog...")
-    while len(product_links) < TARGET_COUNT + 10:
+    while len(product_links) < TARGET_COUNT + 40:
         url = "https://els.id/product-category/laptop/" if page == 1 else f"https://els.id/product-category/laptop/page/{page}/"
         try:
             res = session.get(url, timeout=10)
@@ -75,11 +80,11 @@ def main():
                     if link_el:
                         raw_title = link_el.get_text(strip=True)
                         
-                        # Filter aksesoris berdasarkan judul
-                        if any(x in raw_title.lower() for x in ["adapter", "adaptor", "tas ", "sleeve", "mouse", "keyboard", "charger", "kabel", "power bank", "proyektor", "headset"]):
+                        # Filter aksesoris & komponen berdasarkan judul
+                        if any(x in raw_title.lower() for x in IGNORE_KEYWORDS):
                             continue
                             
-                        # Dapatkan harga dan filter laptop di bawah Rp3.000.000 (aksesoris)
+                        # Dapatkan harga dan filter laptop murah (aksesoris)
                         ins_el = price_el.find("ins")
                         harga_rp = clean_price(ins_el.get_text(strip=True) if ins_el else price_el.get_text(strip=True))
                         if harga_rp < 3000000:
@@ -93,8 +98,7 @@ def main():
             print(f"Error katalog halaman {page}: {e}")
             break
             
-    # Langkah 2: Ambil spesifikasi detail laptop dari link produk
-    print(f"\n[2] Berhasil mengumpulkan {len(product_links)} link. Mulai mengunduh spesifikasi detail...")
+    print(f"\n[2] Berhasil mengumpulkan {len(product_links)} link laptop. Mulai mengunduh spesifikasi detail...")
     scraped_data = []
     
     for idx, item in enumerate(product_links):
@@ -112,7 +116,6 @@ def main():
             if not desc_panel:
                 continue
                 
-            # Parsing spesifikasi terstruktur dari teks deskripsi
             specs = {"processor": "", "memory": "", "storage": "", "battery": ""}
             for line in desc_panel.get_text().split("\n"):
                 line = line.strip()
@@ -138,14 +141,14 @@ def main():
             
             baterai_jam = estimate_battery(specs["battery"], item["title"])
             
-            # Konversi kriteria ke skor
+            # Konversi ke skor
             cpu_low = specs["processor"].lower()
             skor_cpu = 100 if any(x in cpu_low for x in ["i7", "ryzen 7", "ultra 7", "core 7", "i9", "ryzen 9", "ultra 9"]) else 80 if any(x in cpu_low for x in ["i5", "ryzen 5", "ultra 5", "core 5"]) else 60
             skor_ram = 40 if ram_gb <= 4 else 70 if ram_gb <= 8 else 80 if ram_gb <= 12 else 90 if ram_gb <= 16 else 95 if ram_gb <= 24 else 100
             skor_ssd = 40 if ssd_gb <= 128 else 60 if ssd_gb <= 256 else 80 if ssd_gb <= 512 else 100
             skor_baterai = 60 if baterai_jam < 6 else 80 if baterai_jam <= 8 else 100
             
-            # Hitung Skor Utilitas (Weighted)
+            # Hitung Skor Utilitas
             skor_utilitas = round((0.4 * skor_cpu) + (0.3 * skor_ram) + (0.2 * skor_ssd) + (0.1 * skor_baterai), 2)
             
             nama_laptop = clean_name(item["title"])
@@ -163,7 +166,6 @@ def main():
                 "Skor_Utilitas": skor_utilitas
             })
             
-            # Cetak progress (mengganti karakter non-ascii agar aman di terminal Windows)
             print(f"  -> Sukses [{len(scraped_data)}/{TARGET_COUNT}]: {nama_laptop.encode('ascii', errors='replace').decode('ascii')} | Rp{item['price']:,} | Utilitas: {skor_utilitas}")
         except Exception as e:
             continue
@@ -173,7 +175,6 @@ def main():
     df = pd.DataFrame(scraped_data).head(TARGET_COUNT)
     df.insert(0, "ID", range(1, len(df) + 1))
     
-    # Simpan file utama (sesuai spesifikasi) dan file lengkap (tambahan parameter)
     df[["ID", "Nama_Laptop", "Harga_Rp", "Skor_Utilitas"]].to_csv("dataset_laptop.csv", index=False, encoding="utf-8")
     df.to_csv("dataset_laptop_lengkap.csv", index=False, encoding="utf-8")
     print("Selesai! File 'dataset_laptop.csv' dan 'dataset_laptop_lengkap.csv' berhasil diperbarui.")
