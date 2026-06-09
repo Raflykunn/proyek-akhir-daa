@@ -1,0 +1,197 @@
+ID,Nama_Laptop,Harga_Rp,CPU,RAM_GB,SSD_GB,Baterai_Jam,Skor_CPU,Skor_RAM,Skor_SSD,Skor_Baterai,Skor_Utilitas
+1,Acer Aspire 7 PRO A715-59G-516G,13499000,"13th Generation Intel Core i5-13420H Processor (12M Cache, up to 4.60 GHz)",16,512,6.5,80,90,80,80,83.0
+2,Acer Aspire 7 PRO A715-59G-516S,13499000,"13th Generation Intel Core i5-13420H Up To 4,6Ghz 8 Core 12 Threads",16,512,6.5,80,90,80,80,83.0
+3,Acer Aspire 7 Pro A715-59G-77WV,15499000,"13th Generation Intel Core i7-13620H Up to 4,9Ghz 10 Core 16 Threads",16,512,6.5,100,90,80,80,91.0
+4,Acer Aspire Go 14 AI AG14 71M 5471,11999000,"Intel Core Ultra 5 processor 125H with AI Boost (14 Cores (4P+8E+2LP eCores), up to 4.5 GHz)",16,512,7.0,80,90,80,80,83.0
+5,Acer Aspire Go 14 AI AG14-71M-7705,13499000,"Intel Core Ultra 7 processor 155H with AI Boost (16 Cores (6P+8E+2LP eCores), up to 4.8 GHz)",16,512,7.0,100,90,80,80,91.0
+6,Acer Aspire Go AG14 72P 50C7,10299000,"Intel® Core™ 5 processor 120U (10 Cores, up to 5.0 GHz)",32,512,7.5,60,100,80,80,78.0
+7,Acer Aspire GO AG14-72P,10199000,Intel Core 5 120U Up To 5 Ghz 10 Core 12 Threads,8,1000,7.5,80,70,100,80,81.0
+8,Acer Aspire Go Spin AGSP14-31PT-386W Touch 2in1 – Pure Silver,9499000,Intel Core 3 N355 ( 3.9 GHz Frekuensi Turbo – 8 Core 8 Threads ),8,512,7.0,60,70,80,80,69.0
+9,Acer Aspire Lite 14 AL14 32P,6999000,"Intel N150 Speed (turbo) 3.60 GHz,Cache 6 MB. Core Quad-core (4 Core)",8,256,7.0,60,70,60,80,65.0
+10,Acer Aspire Lite 15 AI AL15 61P R3QE,10499000,"AMD Ryzen™ 5 8640HS (6C / 12T, 3.5 / 4.9GHz, 6MB L2 / 16MB L3)",8,512,6.5,60,70,80,80,69.0
+11,Acer Aspire Lite 15 AI AL15 61P R572,12499000,"AMD Ryzen 7 8840HS (8 Cores, up to 5.1 GHz)",16,512,6.5,100,90,80,80,91.0
+12,Acer Aspire Lite 15 AL15 42P R50P,8999000,"AMD Ryzen™ 5 7430U Processor 2.3GHz (19MB Cache, up to 4.3GHz, 6 cores, 12 Threads)",8,512,9.5,60,70,80,100,71.0
+13,Acer Aspire Lite AL14 32P,7499000,"Intel N150 Up To 3,6Ghz 4 Core 4 Threads",8,512,7.5,60,70,80,80,69.0
+14,Acer Aspire Lite AL14 37P,8199000,"Intel Core 3 processor N355 Up to 3,9Ghz 8 Core 8 Threads",8,512,7.5,60,70,80,80,69.0
+15,Acer Aspire Lite AL14 37P,7299000,"Intel N150 Processor (4 Cores, 3.6 GHz)",8,512,7.0,60,70,80,80,69.0
+16,Acer Aspire Lite AL14 53M 36GD,8499000,"Intel Core i3 1315U Processor 6 Cores, 4.5 GHz",8,512,9.5,60,70,80,100,71.0
+17,Acer Aspire Lite AL14-37P-32RZ,8199000,"Intel® Core™ 3 N355 Processor (8 Cores, 3.9 GHz)",8,512,7.5,60,70,80,80,69.0
+18,Acer Gaming Nitro V 15 ANV15-52-7783,18999000,"13th Gen Intel Core I7 13620H Processor 3.40 GHz [12 MB Cache, Up To 4.60 GHz, Octa Core (4P + 4E) 12 Threads]",16,512,6.5,100,90,80,80,91.0
+19,Acer Helios Neo S PHN16S-71-78UQ,27999000,"Intel® Core™ Ultra 7 processor 255HX (30 MB Cache, up to 5.2 GHz)",16,1000,5.0,100,90,100,60,93.0
+20,Acer Mate 14 AM1,8999000,"Intel® Core™ i5 1235U processor 1.3 GHz (12M Cache, up to 4.4 GHz, 10 cores)",8,512,7.0,80,70,80,80,77.0
+21,Acer Nitro 16S AI ANV16S 71 70XH,22999000,"Intel Core 7 240H Up To 5,2Ghz 10 Core 16 Threads",16,512,8.5,100,90,80,100,93.0
+22,Acer Nitro Lite 16 NL16-71G-506C,14499000,"Intel Core 5 210H Up to 4,8 Ghz 8 Core 12 Threads",8,512,6.5,80,70,80,80,77.0
+23,Acer Nitro Lite NL16 71G 75QK,15999000,"Intel® Core™ 7 processor 240H (10 Cores, 5.2 GHz)",16,512,6.5,60,90,80,80,75.0
+24,Acer Nitro Lite NL16 71G 78GF,17999000,Intel Core 7 240H 2.50GHz Octa-core (10 Core),16,512,6.5,100,90,80,80,91.0
+25,Acer Nitro Lite NL16-71G-5613,14999000,"Intel Core 5 210H Up to 4,8 Ghz 8 Core 12 Threads",8,512,6.5,80,70,80,80,77.0
+26,Acer Nitro V 15 ANV15 42 R60U,16499000,"AMD Ryzen™ 7 7445HS Processor 3.2GHz (22MB Cache, up to 4.7GHz, 6 cores, 12 Threads)",16,512,6.5,60,90,80,80,75.0
+27,Acer Predator Helios Neo 16S PHN16S-71-90GL,29999000,"Intel Core Ultra 9 processor 275HX (36MB cache, up to 5.40Ghz)",8,1000,5.0,100,70,100,60,87.0
+28,Acer Predator Triton 14 AI PT14 52T 9162,40999000,"Intel Core Ultra 9 processor 288V (12 MB Smart Cache, 3.3 GHz, up to 5.1 GHz, Intel AI Boost capable up to 48 TOPS, supporting hybrid core architecture",32,1000,5.0,100,100,100,60,96.0
+29,Acer Swift GO 14 OLED SFG14-73-9686 – Frost Blue,17999000,Intel® Core™ Ultra 9 processor 185H with AI Boost (Intel Evo),32,1000,7.0,100,100,100,80,98.0
+30,Acer Swift GO SFG14 75 5664,15499000,"Intel® Core™ Ultra 5 processor 226V 8 Cores, up to 4,50 GHz Total TOPs 97 (CPU, GPU, NPU Only 40 TOPs)",16,1000,16.0,80,90,100,100,89.0
+31,Acer TravelMate X 14 TMX14-51,10499000,Intel Core 5 120U Up To 5 Ghz 10 Core 12 Threads,16,512,7.0,80,90,80,80,83.0
+32,Acer TravelMate X 14 TMX14-51,11999000,"Intel Core 7 150U Up To 5,4 Ghz 10 Core 12 Threads",16,512,7.0,100,90,80,80,91.0
+33,Advan AI Gen,9499000,"Intel® Core Ultra 5 125H Up To 4,9Ghz 14 Cores 18 Threads",16,512,9.5,80,90,80,100,85.0
+34,Advan Soulmate Plus – Grey,5299000,"AMD Quad Core Ryzen 5 3500U Up To 3,8Ghz 4 Core 8 Threads",8,256,7.0,80,70,60,80,73.0
+35,Advan Soulmate X,3799000,"AMD Athlon 3020e Up To 2,6Ghz 2 Core 2 Threads",4,128,7.0,60,40,40,80,52.0
+36,Advan Soulmate X2,4299000,"AMD Athlon 3020e Up To 2,6Ghz 2 Core 2 Threads",8,128,7.0,60,70,40,80,61.0
+37,Advan T-Book,4599000,Intel® Core™ N Series N100,4,128,5.5,60,40,40,60,50.0
+38,Advan TBook,4599000,Intel® Core™ N Series N100,8,128,5.5,60,70,40,60,59.0
+39,Advan TBook X Transformer – Grey,3999000,Intel® Core™ N Series N100,4,128,5.5,60,40,40,60,50.0
+40,Advan WorkMate,8199000,"Intel Core™ Ultra 5 115U Up To 4,2Ghz 8 Cores 10 Threads",8,256,7.0,80,70,60,80,73.0
+41,Advan Workmate,5899000,"AMD Quad Core Ryzen 5 3500U Up To 3,8Ghz 4 Core 8 Threads",8,256,7.0,80,70,60,80,73.0
+42,Advan WorkPlus,8499000,"Intel Core i5-12600H Up To 4,5Ghz 12 Core 16 Threads",24,512,9.5,80,95,80,100,86.5
+43,Advan Workplus AI,9599000,"AMD Octa Core Ryzen 7 255 Up To 4,9ghz Ghz 8 Core 16 Threads (50 AI TOPS)",8,512,9.5,100,70,80,100,87.0
+44,Advan WorkPlus Heritage,7499000,AMD Ryzen 5 7535HS Speed Up to 4.55Ghz 6Core 12Threads,8,512,6.5,80,70,80,80,77.0
+45,Advan WorkPlus Heritage,8999000,AMD Ryzen 5 7535HS Speed Up to 4.55Ghz 6Core 12Threads,16,512,6.5,80,90,80,80,83.0
+46,Advan WorkPro – Grey,7499000,"Intel® Core i5-12450H Up To 4,4Ghz 8 Core 12 Threads",8,512,5.5,80,70,80,60,75.0
+47,Advan Workpro Lite,7199000,"Intel® Core i5-1235U Up To 4,4Ghz 10 Core 12 Threads",8,256,5.5,80,70,60,60,71.0
+48,Asus ExpertBook P1 P1403CVA-S63850WS,8499000,"Intel Core i3-1315U Processor 1.2GHz (10M Cache, up to 4.5GHz, 6 cores)",8,512,7.0,60,70,80,80,69.0
+49,Asus ExpertBook P1 P1403CVA-S63852WS,8799000,"Intel Core 3 100U Up To 4,7Ghz 6 Core 8 Threads",8,512,7.0,60,70,80,80,69.0
+50,Asus ExpertBook P1 P1403CVA-S63852X,10299000,"Intel® Core™ 3 Processor 100U 1.2 GHz (10MB Cache, up to 4.7 GHz, 6 Cores",8,512,7.0,60,70,80,80,69.0
+51,Asus ExpertBook P1 P1403CVA-S65852WS,10499000,"Intel Core 5 Processor 210H 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 12 Threads)",8,512,7.0,80,70,80,80,77.0
+52,Asus ExpertBook P1 PM1403CDA-S65151WS,11699000,"AMD Hexa Core Ryzen 5 150 Up To 4,55hz 6 Core 12 Threads",16,512,7.0,80,90,80,80,83.0
+53,Asus ExpertBook P1 PM1403CDA-S65851WS,9999000,"AMD Ryzen™ 5 150 Processor 3.3GHz (16MB Cache, up to 4.55 GHz, 6 cores, 12 Threads)",8,512,7.0,60,70,80,80,69.0
+54,Asus ExpertBook P1 PM1403CDA-S67151WS,13299000,"AMD Octa Core Ryzen 7 170 Up To 4,75hz 8 Core 16 Threads",16,512,7.0,100,90,80,80,91.0
+55,Asus ExpertBook P5 P5405CSA-NZ5150WS – Misty Grey,16999000,"Intel Core Ultra 5 Processor 226V 16GB 1.6 GHz (8MB Cache, up to 4.5 GHz, 8 cores, 8 Threads)",16,512,7.0,80,90,80,80,83.0
+56,Asus ExpertBook,47999000,Intel AI Boost NPU,32,1000,7.0,60,100,100,80,82.0
+57,Asus ExpertBook,49999000,"Intel Core Ultra X7 Processor 358H 1.9 GHz (18MB Cache, up to 4.8 GHz, 16 Cores, 16 Threads); Intel AI Boost NPU up to 50 TOPS",32,1000,7.0,60,100,100,80,82.0
+58,Asus Gaming V16 V3607VJ-I535B1T-HM,14499000,"Intel Core 5 Processor 210H 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 12 Threads)",8,512,5.0,80,70,80,60,75.0
+59,Asus Gaming V16 V3607VM-I7N56B6T-HM,21999000,"Intel Core 7 240H, 10C (6P + 4E) / 16T, P-core 2.5 / 5.2GHz, E-core 1.8 / 4.0GHz, 24MB",16,512,5.0,100,90,80,60,89.0
+60,Asus Gaming V16 V3607VU-I545B7T-HM – Matte Black,16499000,"Intel Core 5 Processor 210H 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 12 Threads)",16,512,5.0,80,90,80,60,81.0
+61,Asus Gaming V16 V3607VU-I745B7T-HM,17999000,"Intel Core 7 240H Up To 5,2Ghz 10 Core 16 Threads",16,512,5.0,100,90,80,60,89.0
+62,Asus ROG STRIX G G615JHR-I7N55C6G-HM,27499000,"Intel Core i7-14650HX Up To 5,2Ghz 16 Core 24 Threads",16,512,5.0,100,90,80,60,89.0
+63,Asus ROG STRIX G G615LH-I7N55C6G-HM,28499000,"Intel Core Ultra 7 Processor 255HX 2.4 GHz (30MB Cache, up to 5.2 GHz, 20 cores, 20 Threads)",16,512,5.0,100,90,80,60,89.0
+64,Asus ROG Strix G16 G614PM-R9N56C6G-HM – Eclipse Gray,29999000,"AMD Ryzen 9 8940HX Processor 2.4GHz (80MB Cache, up to 5.3GHz, 16 cores, 32 Threads)",16,1000,5.0,100,90,100,60,93.0
+65,Asus TUF A15 FA506NCG-R735B6T-HM,14499000,"AMD Ryzen 7 7445HS Processor 3.2GHz (22MB Cache, up to 4.7GHz, 6 cores, 12 Threads)",16,512,5.0,100,90,80,60,89.0
+66,Asus TUF Gaming A15 FA506NCG-R735B1T-HM,13499000,"AMD Ryzen 7 7445HS Processor 3.2GHz (22MB Cache, up to 4.7GHz, 6 cores, 12 Threads)",8,512,5.0,100,70,80,60,83.0
+67,Asus TUF Gaming A15 FA506NCQ-R735B1T-HM,13999000,"AMD Ryzen 7 170 Processor 3.2GHz (20MB Cache, up to 4.75 GHz, 8 cores, 16 Threads)",8,512,5.0,100,70,80,60,83.0
+68,Asus TUF Gaming A15 FA506NCQ-R735B6T-HM,14999000,"AMD Ryzen 7 170 Processor 3.2GHz (20MB Cache, up to 4.75 GHz, 8 cores, 16 Threads)",16,512,5.0,100,90,80,60,89.0
+69,Asus TUF Gaming A16 FA607NUG-R745J6M-HM,16999000,"AMD Ryzen 7 7445HS Processor 3.2GHz (22MB Cache, up to 4.7GHz, 6 cores, 12 Threads)",16,512,5.0,100,90,80,60,89.0
+70,Asus TUF Gaming A16 FA608PP-R9N57G6G-HM,29499000,"AMD Ryzen 9 8940HX Processor 2.4GHz (80MB Cache, up to 5.3GHz, 16 cores, 32 Threads)",16,1000,5.0,100,90,100,60,93.0
+71,Asus TUF Gaming A16 FA608UH-R7N55J6G-HM,22999000,"AMD Ryzen 7 260 Processor 3.8GHz (24MB Cache, up to 5.1 GHz, 8 cores, 16 Threads); AMD XDNA NPU up to 16TOPS",16,512,5.0,100,90,80,60,89.0
+72,Asus TUF Gaming A16 FA608UM-R7N56J6G-HM,23999000,"AMD Ryzen 7 260 processor with 8 cores, 16 threads",16,512,5.0,100,90,80,60,89.0
+73,Asus TUF Gaming F15 FX607VU-I545J6M-HM,18999000,"Intel Core 5 Processor 210H 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 12 Threads)",16,512,5.0,80,90,80,60,81.0
+74,Asus TUF Gaming F16 FX608JHR-I7N55J6G-HM,23999000,"Intel® Core™ i7 Processor 14650HX 2.2 GHz (30MB Cache, up to 5.2 GHz, 16 cores, 24 Threads)",16,512,5.0,100,90,80,60,89.0
+75,Asus TUF Gaming F16 FX608JMR,26999000,"14th Gen Intel Core Intel Core i7 Processor 14650HX 2.2 GHz (30MB Cache, up to 5.2 GHz, 16 cores, 24 Threads)",16,1000,5.0,100,90,100,60,93.0
+76,Asus Vivobook 14 A1404VA,13499000,"Intel Core i7-1355U Processor 1.7 GHz (12MB Cache, up to 5.0 GHz, 10 cores, 12 Threads)",16,512,7.0,100,90,80,80,91.0
+77,Asus Vivobook 14 A1404VAP,8999000,"Intel Core 3 100U Up To 4,7Ghz 6 Core 8 Threads",8,512,7.0,60,70,80,80,69.0
+78,Asus Vivobook 14 A1404VAP,11199000,Intel Core 5 Processor 120U Up To 5 Ghz 10 Core 12 Threads,8,512,7.0,80,70,80,80,77.0
+79,Asus Vivobook 14 A1404VAP,10499000,"Intel Core 5 Processor 120U 1.4 GHz (12MB Cache, up to 5.0 GHz, 10 cores, 12 Threads)",8,512,7.0,80,70,80,80,77.0
+80,Asus Vivobook 14 A1404VAP,14499000,"Intel Core 7 Processor 150U 1.8 GHz (12MB Cache, up to 5.4 GHz, 10 cores, 12 Threads)",16,1000,7.0,100,90,100,80,95.0
+81,Asus Vivobook 14 A1404VAP,13999000,"Intel Core 7 Processor 150U 1.8 GHz (12MB Cache, up to 5.4 GHz, 10 cores, 12 Threads)",16,512,7.0,100,90,80,80,91.0
+82,Asus Vivobook 14 A1405VA,11499000,"Intel Core i5-13420H Processor 2.1 GHz (12MB Cache, up to 4.6 GHz, 8 cores, 12 Threads)",16,512,7.0,80,90,80,80,83.0
+83,Asus Vivobook 14 A1407QA Snapdragon®,11499000,Qualcomm® Hexagon™ NPU up to 45TOPS,16,1000,7.0,60,90,100,80,79.0
+84,Asus Vivobook Flip S14 TP3407SA-OLED5152M,19999000,"Intel Core Ultra 5 Processor 226V 2.1 GHz (8MB Cache, up to 4.5 GHz, 8 cores, 8 Threads) Intel AI Boost NPU up to 40",16,512,7.0,80,90,80,80,83.0
+85,Asus Vivobook Flip TP3407AA-OLED7151TM,25999000,Intel NPU up to 50TOPS,16,512,7.0,60,90,80,80,75.0
+86,Asus Vivobook Go 14 E410KA,6299000,"Intel Celeron N4500 Processor 1.1 GHz (4M Cache, up to 2.8 GHz, 2 cores)",8,256,7.0,60,70,60,80,65.0
+87,Asus Vivobook Go 15 E1504FA,9499000,"AMD Ryzen 3 7320U Mobile Processor (4-core/8-thread, 4MB cache, up to 4.1 GHz max boost)",16,512,7.0,60,90,80,80,75.0
+88,Asus Vivobook S14 M3407HA,14999000,"AMD Ryzen 7 260 Processor 3.8GHz (24MB Cache, up to 5.1 GHz, 8 cores, 16 Threads) AMD XDNA NPU up to 16TOPS",16,1000,7.0,100,90,100,80,95.0
+89,Asus Vivobook S14 M3407KA,16499000,"AMD Ryzen AI 7 350 Processor 2.0GHz (24MB Cache, up to 5.0GHz, 8 cores, 16 Threads); AMD XDNA NPU up to 50TOPS",16,1000,7.0,60,90,100,80,79.0
+90,Asus Vivobook S14 S3407CA,16499000,Intel AI Boost NPU up to 13TOPS,16,1000,7.0,60,90,100,80,79.0
+91,Asus Vivobook S14 S3407CA,13399000,"Intel® Core™ 5 Processor 210H 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 12 Threads)",16,1000,7.0,60,90,100,80,79.0
+92,Asus Vivobook S14 S3407QA Snapdragon,11999000,"Snapdragon® X X1 26 100 Processor (30MB Cache, up to 2.97GHz, 8 cores, 8 Threads); Qualcomm® Hexagon™ NPU up to 45TOPS",16,512,7.0,60,90,80,80,75.0
+93,Asus Vivobook S14 S3407VA,12699000,"Intel® Core™ 5 Processor 210H 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 12 Threads)",16,512,7.0,60,90,80,80,75.0
+94,Asus Zenbook 14 OLED UX3405CA,25999000,Intel AI Boost NPU,32,1000,7.0,60,100,100,80,82.0
+95,Asus Zenbook 14 UX3405CA,19999000,Intel AI Boost NPU,16,1000,7.0,60,90,100,80,79.0
+96,Asus Zenbook A14 UX3407QA Snapdragon,15999000,Qualcomm Hexagon NPU up to 45TOPS,16,512,7.0,60,90,80,80,75.0
+97,Asus Zenbook OLED 14 UM3406GA-OLED7111M,19999000,"AMD Ryzen AI 7 445 Processor 2.0GHz (14MB Cache, up to 4.6GHz, 6 cores, 12 Threads); AMD XDNA NPU up to 50TOPS",16,1000,7.0,60,90,100,80,79.0
+98,Asus Zenbook S 14 OLED UX5406SA,28499000,"Intel Core Ultra 7 Processor 258V 32GB 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 8 Threads)",32,1000,7.0,100,100,100,80,98.0
+99,Asus Zenbook S16 OLED UM5606GA-OLEDS9311TM,34999000,AMD XDNA™ NPU up to 50TOPS,32,1000,7.0,60,100,100,80,82.0
+100,Avita Satus S101,3499000,"Intel Celeron N4020 Up To 2,8Ghz 2 Cores 2 Threads",8,256,7.0,60,70,60,80,65.0
+101,Axioo Hype R5,9799000,"Intel Core i5-1235U (1.3 GHz Base, 4.4 GHz Turbo, 10 Cores, 12 Threads, TDP: 15W)",24,512,7.0,80,95,80,80,84.5
+102,Axioo MyBook Hype 1,3799000,"Intel® Celeron® Pocessor N4020(1.1GHz Base, 2.8GHz Burst, 2 Core 2 Threads, Base TDP: 6W)",4,128,7.0,60,40,40,80,52.0
+103,Axioo MyBook Hype 1,4299000,"Intel Celeron N4020 (1.1GHz Base, 2.8GHz Burst, 2 Core 2 Threads, Base TDP: 6W)",8,128,7.0,60,70,40,80,61.0
+104,Axioo MyBook Hype 10,4499000,"Intel Celeron™ N4020 Up To 2,8Ghz 2 Core 2 Threads",8,256,7.0,60,70,60,80,65.0
+105,Axioo MyBook Hype 3 Gen11,6299000,"Intel Core i3-1125G4 speed up 2.0 GHz (4 Cores, 8 Threads, 3.7GHz Turbo)",8,256,7.0,60,70,60,80,65.0
+106,Axioo MyBook Hype 5 G12 V2,7799000,"Intel® Core™ i5-1235U (10 Cores,12 Threads, Base TDP:15W)",8,256,7.0,80,70,60,80,73.0
+107,Axioo MyBook Hype 5,7799000,"Intel® Core™ i5-1235U (10 Cores,12 Threads, Base TDP:15W)",8,256,7.0,80,70,60,80,73.0
+108,Axioo MyBook Hype 5 X3,5999000,"AMD Ryzen™ 5-3500U(2.1GHz Base, 3.7GHz Turbo, 4 Core 8 Threads, Base TDP: 15W)",8,256,7.0,60,70,60,80,65.0
+109,Axioo MyBook Hype 5 X3 Lollipop,6199000,"AMD Ryzen 5-3500U (2.1GHz Base, 3.7GHz Turbo, 4 Core 8 Threads, Base TDP: 15W)",8,256,7.0,80,70,60,80,73.0
+110,Axioo Mybook Hype 5 X5 Lollipop,7299000,"AMD Hexa Core Ryzen 5 7430U Up To 4,3Ghz 6 Core 12 Threads",8,256,7.0,80,70,60,80,73.0
+111,Axioo MyBook Hype 5 X6,7999000,"AMD Ryzen 5-6600H (3.3GHz Base, 4.5GHz Turbo, 6 Core12 Threads, Base TDP: 45W)",8,512,5.0,80,70,80,60,75.0
+112,Axioo MyBook Hype 7 X7,7699000,AMD Ryzen 7 5825U 1.8 – 4.3GHz (8C/16T/8MB Cache),8,512,7.0,100,70,80,80,85.0
+113,Axioo Pongo 750,16299000,"Intel® Core™ i7-13620H @3.6 GHz Base, 4.9 GHz Turbo(10 Cores, 16 Threads, TDP:45 W)",16,512,5.0,100,90,80,60,89.0
+114,Axioo Pongo 775,23499000,"Intel Core i7-13620H (10 Cores, 16 Threads, TDP:45 W) “Performance Cores: 6 Cores, 12 Threads, 2.4 GHz Base, 4.9 GHz Turbo. Efficient Cores: 4 Cores, 4 Threads, 1.8 GHz Base, 3.6 GHz Turbo”",16,512,5.0,100,90,80,60,89.0
+115,Axioo Pongo V2 725,13499000,"Intel® Core™ i7-13620H Up To 4,9Ghz 10 Core 16 Threads",16,512,5.0,100,90,80,60,89.0
+116,Axioo Slimbook Hype 10,4499000,"Intel Celeron Pocessor N4020(1.1GHz Base, 2.8GHz Burst, 2 Core 2 Threads, Base TDP: 6W)",8,256,7.0,60,70,60,80,65.0
+117,Dell Pro 14 Essential (PV14255),8999000,"AMD Ryzen 5 220 Processor (6 cores, up to 4.9 GHz)",8,512,7.0,80,70,80,80,77.0
+118,HP 14 EM0320AU / EM0321AU,8499000,"AMD Ryzen 3 7320U (up to 4.1 GHz max boost clock, 4 MB L3 cache, 4 cores, 8 threads )",8,512,7.5,60,70,80,80,69.0
+119,HP 14 EM0730AU EM0731AU,12499000,"AMD Ryzen 7 7730U (8C / 16T, 2.0 / 4.5GHz, 4MB L2 / 16MB L3)",16,512,7.5,100,90,80,80,91.0
+120,HP 14 EP0321TU,7699000,"Intel® Core™ i3-1315U Cache 10 M, hingga 4,50 GHz",4,512,7.5,60,40,80,80,60.0
+121,HP 14 EP1188TU,10999000,Intel Core Ultra 5 125H,16,512,7.0,80,90,80,80,83.0
+122,HP 14-EP1733TU EP1177TU,9999000,"Intel Core 5 120U Cache 12M, hingga 5,00 GHz",8,512,7.5,80,70,80,80,77.0
+123,HP HyperX Omen Gaming 15 GB0555AX,20999000,"AMD Ryzen 5 240 (up to 5.0 GHz max boost clock, 16 MB L3 cache, 6 cores, 12 threads)",16,1000,6.5,80,90,100,80,87.0
+124,HP HyperX Omen Gaming 15 GB0666AX,22499000,"AMD Ryzen™ 7 260 (up to 5.1 GHz max boost clock, 16 MB L3 cache, 8 cores, 16 threads)",16,1000,6.5,60,90,100,80,79.0
+125,HP HyperX Omen Gaming 15 GB0777AX,23999000,"AMD Ryzen™ 7 260 (up to 5.1 GHz max boost clock, 16 MB L3 cache, 8 cores, 16 threads)",16,1000,6.5,60,90,100,80,79.0
+126,HP Omen 16 AP0999AX,25499000,"AMD Ryzen 9 8940HX (up to 5.3 GHz max boost clock, 64 MB L3 cache, 16 cores, 32 threads)",24,1000,5.0,100,95,100,60,94.5
+127,HP Omnibook 3 AI 14 HS0022TU,15499000,"Intel Core Ultra 5 325 Up To 4,5 Ghz 8 Core 8 Threads",16,512,7.5,80,90,80,80,83.0
+128,HP OmniBook 3 AI 14 HV0036AU,15999000,"AMD Hexa Core Ryzen AI 7 445 Up To 4,6Ghz 6 Core 12 Threads",16,512,7.5,60,90,80,80,75.0
+129,HP Omnibook 5 Flip KM0013TU/KM0014TU,19999000,"Intel® Core™ Ultra 5 Processor 322 (12M Cache, up to 4.40 GHz)",16,512,9.5,80,90,80,100,85.0
+130,HP OmniBook 7 AI 14 FR0222TU,16099000,"Intel Core Ultra 5 225H (up to 4.9 GHz with Intel Turbo Boost Technology, 18 MB L3 cache, 14 cores, 14 threads)",16,512,9.5,80,90,80,100,85.0
+131,HP Victus 15 FA2717TX – Mica Silver,16499000,"Intel Core i5-13420H (up to 4.6 GHz with Intel Turbo Boost Technology, 12 MB L3 cache, 8 cores, 12 threads)",16,512,4.5,80,90,80,60,81.0
+132,Infinix Xbook B14,7799000,"AMD Ryzen 5 7535HS (6 core / 12 thread, hingga 4.55 GHz, TDP 35W)",8,512,6.5,80,70,80,80,77.0
+133,Infinix Xbook B14,9199000,"AMD Ryzen 7 7735HS Up To 4,5Ghz 8 Core 16 Threads",8,512,6.5,100,70,80,80,85.0
+134,Infinix Xbook B14,8799000,"AMD Octa Core Ryzen 7 7735HS Up To 4,5Ghz 8 Core 16 Threads",8,512,6.5,100,70,80,80,85.0
+135,Infinix Xbook B14,7699000,"AMD Octa Core Ryzen 7-5825U Up To 4,5hz 8 Core 16 Threads",8,512,7.5,100,70,80,80,85.0
+136,Infinix Xbook B15,7299000,"AMD Hexa Core Ryzen 5 5500U Up To 4,0Ghz 6 Core 12 Threads",8,256,7.0,80,70,60,80,73.0
+137,Lenovo Ideapad 5 14IAL10 63ID,17999000,Ultra 7 255U,8,512,7.0,100,70,80,80,85.0
+138,Lenovo IdeaPad Slim 3 14AMN8 C4ID,8499000,"AMD Ryzen 3 7320U (4C / 8T, 2.4 / 4.1GHz, 2MB L2 / 4MB L3)",8,512,7.5,60,70,80,80,69.0
+139,Lenovo IdeaPad Slim 3 14IRH10 EXID,14299000,"Intel Core i7-13620H, 10C (6P + 4E) / 16T, P-core 2.4 / 4.9GHz, E-core 1.8 / 3.6GHz, 24MB",8,512,7.5,100,70,80,80,85.0
+140,Lenovo IdeaPad Slim 3 14IRU8,8199000,"Intel Core i3-1315U, 6C (2P + 4E) / 8T, P-core 1.2 / 4.5GHz, E-core 0.9 / 3.3GHz, 10MB",8,256,7.5,60,70,60,80,65.0
+141,Lenovo IdeaPad Slim 3 14IRU8,8199000,"Intel Core i3-1315U, 6C (2P + 4E) / 8T, P-core 1.2 / 4.5GHz, E-core 0.9 / 3.3GHz, 10MB",8,256,7.5,60,70,60,80,65.0
+142,Lenovo IdeaPad Slim 3 14IRU8,8699000,"Intel Core i3-1315U, 6C (2P + 4E) / 8T, P-core 1.2 / 4.5GHz, E-core 0.9 / 3.3GHz, 10MB",8,512,7.5,60,70,80,80,69.0
+143,Lenovo IdeaPad Slim 3 15IRU8 KXID,9299000,"Intel Core i3-1315U, 6C (2P + 4E) / 8T, P-core up to 4.5GHz, E-core up to 3.3GHz, 10MB Intel Smart Cache",8,512,7.5,60,70,80,80,69.0
+144,Lenovo Ideapad SLIM 3-14IRH10 BWID,10299000,"Intel® Core i5-13420H, 8C (4P + 4E) / 12T, P-core up to 4.6GHz, E-core up to 3.4GHz, 12MB Intel Smart Cache",8,512,7.5,80,70,80,80,77.0
+145,Lenovo IdeaPad Slim 5 13ARP10 5KID,15999000,"AMD Ryzen 7 7735HS (8C / 16T, 3.2 / 4.75GHz, 4MB L2 / 16MB L3)",16,512,4.5,100,90,80,60,89.0
+146,Lenovo IdeaPad Slim 5 14AGP11,18999000,"AMD Ryzen AI 7 445 (6C / 12T, 2.0 / 4.6GHz, 6MB L2 / 8MB L3)",8,512,9.5,60,70,80,100,71.0
+147,Lenovo IdeaPad Slim 5 14IAH10,15999000,"Intel Core Ultra 5 225H, 14C (4P + 8E + 2LPE) / 14T, Max Turbo up to 4.9GHz, 18MB",8,512,9.5,80,70,80,100,79.0
+148,Lenovo Legion 5 15IAX10 64ID,33999000,"Intel Core Ultra 7 255HX, 20C (8P + 12E) / 20T, Max Turbo up to 5.2GHz, 30MB",16,512,8.5,100,90,80,100,93.0
+149,Lenovo Legion 5 15IAX10 65ID,30999000,"Intel Core Ultra 7 255HX, 20C (8P + 12E) / 20T, Max Turbo up to 5.2GHz, 30MB",32,512,8.5,100,100,80,100,96.0
+150,Lenovo Legion 5 15IRX10 E9ID,25999000,"Intel Core i7-13650HX, 14C (6P + 8E) / 20T, P-core 2.6 / 4.9GHz, E-core 1.9 / 3.6GHz, 24MB",16,512,8.5,100,90,80,100,93.0
+151,Lenovo Legion PRO 5 16ADR10 15ID,28999000,"AMD Ryzen™ 7 8745HX (8C / 16T, 3.6 / 5.1GHz, 8MB L2 / 32MB L3)",24,1000,8.5,60,95,100,100,82.5
+152,Lenovo Legion PRO 5 16IAX10 35ID,29999000,"Intel Core Ultra 7 255HX, 20C (8P + 12E) / 20T, Max Turbo up to 5.2GHz, 30MB",16,1000,8.5,100,90,100,100,97.0
+153,Lenovo Legion PRO 5 16IAX10 39ID,36499000,"Intel Core Ultra 7 255HX, 20C (8P + 12E) / 20T, Max Turbo up to 5.2GHz, 30MB",32,1000,8.5,100,100,100,100,100.0
+154,Lenovo Legion Pro 5 16IRX10 54ID,31999000,"Intel Core i9-14900HX, 24C (8P + 16E) / 32T, P-core 2.2 / 5.8GHz, E-core 1.6 / 4.1GHz, 36MB",32,1000,8.5,100,100,100,100,100.0
+155,LENOVO LOQ 15 ARP10E,15999000,"AMD Ryzen 7 7735HS (8C / 16T, 3.2 / 4.75GHz, 4MB L2 / 16MB L3)",16,512,5.0,100,90,80,60,89.0
+156,Lenovo LOQ 15AHP11 0SID,25999000,"AMD Ryzen™ 7 250 (8C / 16T, 3.3 / 5.1GHz, 8MB L2 / 16MB L3)",16,512,6.5,60,90,80,80,75.0
+157,Lenovo LOQ 15AHP11 0TID,22499000,"AMD Ryzen™ 7 250 (8C / 16T, 3.3 / 5.1GHz, 8MB L2 / 16MB L3)",16,512,6.5,60,90,80,80,75.0
+158,Lenovo LOQ 15ARP10E,13999000,"AMD Octa Core Ryzen 7 170 Up To 4,75Ghz 8 Core 16 Threads",16,512,4.5,100,90,80,60,89.0
+159,Lenovo LOQ 15ARP10E-1AID,13999000,"AMD Ryzen™ 7 7735HS (8C / 16T, 3.2 / 4.75GHz, 4MB L2 / 16MB L3) AI PC Category AI-Powered Gaming PC",16,1000,4.5,60,90,100,60,77.0
+160,Lenovo LOQ 15IAX9E EHID,14999000,"Intel Core i5-12450HX, 8C (4P + 4E) / 12T, P-core up to 4.4GHz, E-core up to 3.1GHz, 12MB Intel Smart Cache",16,512,6.5,80,90,80,80,83.0
+161,Lenovo LOQ 15IRX11 3DID,20499000,"Intel Core i5-13450HX, 10C (6P + 4E) / 16T, P-core 2.4 / 4.6GHz, E-core 1.8 / 3.4GHz, 20MB Intel Smart Cache",16,512,6.5,80,90,80,80,83.0
+162,Lenovo LOQ 15IRX11 3KID,18999000,"Intel Core i5-13450HX, 10C (6P + 4E) / 16T, P-core 2.4 / 4.6GHz, E-core 1.8 / 3.4GHz, 20MB Intel Smart Cache",16,512,6.5,80,90,80,80,83.0
+163,Lenovo LOQ 15IRX9 ARID,19499000,"Intel Core i7-13650HX, 14C (6P + 8E) / 20T, P-core 2.6 / 4.9GHz, E-core 1.9 / 3.6GHz, 24MB",16,512,6.5,100,90,80,80,91.0
+164,Lenovo LOQ 15IRX9 ASID,16499000,"Intel Core i5-13450HX, 10C (6P + 4E) / 16T, P-core 2.4 / 4.6GHz, E-core 1.8 / 3.4GHz, 20MB",16,512,6.5,80,90,80,80,83.0
+165,Lenovo Yoga Pro 7 OLED 14IAH10 27ID – Luna Grey,31999000,"Intel Core Ultra 9 285H, 16C (6P + 8E + 2LPE) / 16T, Max Turbo up to 5.4GHz, 24MB",32,1000,9.5,100,100,100,100,100.0
+166,Lenovo Yoga Slim 7 14ILL10 AVID,22999000,"Intel Core Ultra 7 258V, 8C (4P + 4LPE) / 8T, Max Turbo up to 4.8GHz, 12MB Intel Smart Cache",32,1000,9.5,100,100,100,100,100.0
+167,Lenovo Yoga Slim 7 14ILL10 AWID,17999000,"Intel Core Ultra 5 226V, 8C (4P + 4LPE) / 8T, Max Turbo up to 4.5GHz, 8MB Intel Smart Cache",16,512,9.5,80,90,80,100,85.0
+168,MacBook Air 13 Apple M5,20499000,Intel Core i3,16,512,7.0,60,90,80,80,75.0
+169,MSI Crosshair 16 HX AI D2XWGKG 252ID,30999000,"Intel Core Ultra 9 Processor 275HX 2.7 GHz (36MB Cache, up to 5.4 GHz, 24 cores, 24 Threads)",32,1000,5.0,100,100,100,60,96.0
+170,MSI Cyborg 15 A13UDXK 1442ID – Translucent Black,17499000,"13th Gen Intel Core i7-13620H processor, 10 cores (6 P-cores + 4 E-cores), Max Turbo Frequency 4.9 GHz",16,512,5.0,100,90,80,60,89.0
+171,MSI Cyborg 15 B13WEKG 475ID,17499000,13th Gen Intel Core i5-13420H processor 8 cores (4 P-cores + 4 E-cores),16,512,5.0,80,90,80,60,81.0
+172,MSI Cyborg 15 B13WEKG 481ID,19999000,"13th Gen Intel Core i7-13620H Up To 4,9Ghz 10 Core 16 Threads",16,512,5.0,100,90,80,60,89.0
+173,MSI Cyborg 15 B2RWFKG 050ID,21999000,"Intel Core 7 240H Up To 5,2Ghz 10 Core 16 Threads",16,512,5.0,100,90,80,60,89.0
+174,MSI Cyborg 15 B2RWFKG 051ID,18499000,"Intel Core 5 210H Up To 4,8 Ghz 8 Core 12 Threads",16,512,5.0,80,90,80,60,81.0
+175,MSI Katana 15 HX B14WEK 087ID,21999000,"Intel Core I7 14650HX Up To 5,2Ghz 16 Core 24 Threads",8,512,5.0,100,70,80,60,83.0
+176,MSI Katana 15 HX B14WFK 92ID,23499000,"14th Gen Intel Core i7-14650HX Up To 5,2Ghz 16 Core 24 Threads",16,512,5.0,100,90,80,60,89.0
+177,MSI Katana 15 HX B14WGK 201ID,25999000,"14th Gen Intel Core i7-14650HX Up To 5,2Ghz 16 Core 24 Threads",16,512,5.0,100,90,80,60,89.0
+178,MSI Modern 14 F13MG 647ID,10499000,"13th Gen Intel Core i5-1334U Up To 4,6Ghz 10 Core 12 Threads",8,512,7.0,80,70,80,80,77.0
+179,MSI Modern 14 F13MG 818ID,8999000,"13th Gen Intel Core i3-1315U Up To 4,5Ghz 6 Core 8 Threads",8,512,7.0,60,70,80,80,69.0
+180,MSI Modern 15 F1MG 475ID,11599000,"Intel Core 5 processor 120U 10 cores (2 P-cores + 8 E-cores), 12 threads, 12 MB Intel Smart Cache, Max Turbo Frequency 5.0 GHz",16,512,7.0,80,90,80,80,83.0
+181,MSI Prestige 13 AI+ A2VMG 076ID,26999000,"Intel® Core™ Ultra 9 processor 288V with up to 48 NPU TOPS (120 total platform TOPS) 8 cores (4 P-cores + 4 E-cores), 8 threads, 12 MB Intel® Smart Cache, Max Turbo Frequency 5.1 GHz",32,1000,7.0,100,100,100,80,98.0
+182,MSI Prestige Flip 14 AI+ D3MTG,34499000,"Intel Core Ultra 9 processor 386H with up to 50 NPU TOPS 16 cores (4 P-cores + 8 E-cores + 4 Low Power E-cores), 16 threads, 18MB Intel Smart Cache, Max Turbo Frequency 4.9 GHz",32,1000,7.0,100,100,100,80,98.0
+183,MSI Stealth A16 MercedesAMG AI+ A3XWGG 023ID,39999000,"AMD Ryzen AI 9 HX 370 Up To 5,1Ghz 12 Core 24 Threads (80 AI TOPS)",16,1000,5.0,60,90,100,60,77.0
+184,MSI Thin 15 B13UC 3448ID,14499000,"13th Gen Intel® Core™ i7-13620H 10 cores (6 P-cores + 4 E-cores), 16 threads, 24 MB Intel® Smart Cache, Max Turbo Frequency 4.9 GHz",8,512,7.0,100,70,80,80,85.0
+185,MSI Thin 15 B13UC 3449ID,12999000,"13th Gen Intel Core i5-13420H processor 8 cores (4 P-cores + 4 E-cores), Max Turbo Frequency 4.6 GHz",8,512,5.0,80,70,80,60,75.0
+186,MSI Thin 15 B13VE 3415ID,14999000,"13th Gen Intel Core i5-13420H processor 8 cores (4 P-cores + 4 E-cores), Max Turbo Frequency 4.6 GHz",16,512,5.0,80,90,80,60,81.0
+187,MSI Thin A15 B7UC 664ID,13099000,"AMD Ryzen 7 7735HS Processor with AMD XDNA architecture, 8 cores, Max Boost Clock 4.75 GHz",8,512,5.0,100,70,80,60,83.0
+188,MSI Vector 16 HX AI A2XWHG 239ID – Cosmos Gray,30999000,"Intel Core Ultra 7-255HX 1.8 – 5.2 GHz 24 cores (8 P-cores + 16 E-cores), 24 thread, 40MB cache, Max Turbo Frequency 5.4 GHz",16,512,8.5,100,90,80,100,93.0
+189,MSI VenturePro AI 15 A2RWEG,17999000,"Intel® Core™ 7 200H series processor, Up to 5,2Ghz 10 Core 16 Threads",16,1000,4.5,60,90,100,60,77.0
+190,Polytron Luxia,6299000,"Intel Core i3-1215U Up To 4,4Ghz 6 Core 8 Threads",8,256,7.0,60,70,60,80,65.0
+191,SPC Life 5,6999000,"Intel Core i5-12450H Up To 4,4Ghz 8 Core 12 Threads",8,512,7.0,80,70,80,80,77.0
+192,SPC Style 3,5099000,"AMD Ryzen 3 3200U (2 Core / 4 Thread up to 3.5 GHz Boost, 4MB L3 Cache TDP: 15W)",8,256,7.0,60,70,60,80,65.0
+193,Tecno Megabook K15S,6999000,"AMD Ryzen 5 7430U Processor 2.3GHz (19MB Cache, up to 4.3GHz, 6 cores, 12 Threads)",8,512,9.5,80,70,80,100,79.0
+194,Tecno Megabook T1,7999000,"AMD Ryzen 5 7430U (6C / 12T, 2.3 / 4.3GHz, 3MB L2 / 16MB L3)",16,512,9.5,80,90,80,100,85.0
+195,Tecno Megabook T14 Air,9499000,"AMD Hexa Core Ryzen 5-7535HS Up To 4,6hz 6 Core 12 Threads",16,512,6.5,80,90,80,80,83.0
+196,Tecno Megabook T14 Air,9999000,"Intel Core i5-1334U Up To 4,6Ghz 10 Core 12 Threads",16,512,7.5,80,90,80,80,83.0
