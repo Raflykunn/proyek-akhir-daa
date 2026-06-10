@@ -2,9 +2,10 @@ import csv
 
 # 1. Meminta Input dari User lewat Terminal
 print("=== INPUT KRITERIA LAPTOP ===")
-BUDGET = int(input("Masukkan budget maksimal Anda (Rupiah, misal 10000000): "))
-MIN_RAM = int(input("Masukkan minimal RAM yang dibutuhkan (GB, misal 8): "))
-MIN_SSD = int(input("Masukkan minimal Storage/SSD yang dibutuhkan (GB, misal 512): "))
+BUDGET   = int(input("Masukkan budget maksimal Anda (Rupiah, misal 10000000): "))
+MIN_RAM  = int(input("Masukkan minimal RAM yang dibutuhkan (GB, misal 8): "))
+MIN_SSD  = int(input("Masukkan minimal Storage/SSD yang dibutuhkan (GB, misal 512): "))
+CARI_CPU = input("Cari keyword CPU (opsional, lewati dengan Enter, misal 'i5' atau 'Ryzen 5'): ").lower()
 print("-" * 40)
 
 laptop_layak = []
@@ -22,6 +23,9 @@ with open('dataset_laptop_lengkap.csv', mode='r', encoding='utf-8') as file:
         
         # 3. FILTERING: Cek apakah memenuhi syarat budget & spesifikasi
         if harga <= BUDGET and ram >= MIN_RAM and ssd >= MIN_SSD:
+            # Filter tambahan berdasarkan keyword CPU
+            if CARI_CPU and CARI_CPU not in row['CPU'].lower():
+                continue
             
             # STRATEGI GREEDY: Hitung nilai keuntungan (Skor / Harga)
             density = skor_utilitas / harga
@@ -37,18 +41,19 @@ with open('dataset_laptop_lengkap.csv', mode='r', encoding='utf-8') as file:
                 'density': density
             })
 
-# 4. SELEKSI GREEDY: Cari yang nilai Density-nya paling tinggi
+# 4. SELEKSI GREEDY: Cari yang nilai skor-nya paling tinggi (berdasarkan penjelasanmu)
 if laptop_layak:
-    # Urutkan list berdasarkan density dari yang terbesar ke terkecil
-    laptop_layak.sort(key=lambda x: x['density'], reverse=True)
+    # Urutkan list berdasarkan skor dari yang terbesar ke terkecil
+    laptop_layak.sort(key=lambda x: x['skor'], reverse=True)
     
     # Elemen pertama (indeks 0) otomatis adalah laptop terbaik versi Greedy
     rekomendasi = laptop_layak[0]
     
     # 5. Tampilkan Hasil
-    print("\n=== REKOMENDASI LAPTOP PALING OPTIMAL (GREEDY) ===")
+    print("\n=== REKOMENDASI LAPTOP TERBAIK SESUAI BUDGET (GREEDY) ===")
     print(f"Nama Laptop   : {rekomendasi['nama']}")
     print(f"Harga         : Rp {rekomendasi['harga']:,}")
+    print(f"Sisa Budget   : Rp {BUDGET - rekomendasi['harga']:,}")
     print(f"Spesifikasi   : CPU -> {rekomendasi['cpu']}")
     print(f"                RAM -> {rekomendasi['ram']} GB")
     print(f"                SSD -> {rekomendasi['ssd']} GB")

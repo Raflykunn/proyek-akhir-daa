@@ -2,9 +2,10 @@ import csv
 
 # 1. Input dari User
 print("=== INPUT KRITERIA LAPTOP ===")
-BUDGET  = int(input("Masukkan budget maksimal (Rupiah, misal 10000000): "))
-MIN_RAM = int(input("Masukkan minimal RAM (GB, misal 8): "))
-MIN_SSD = int(input("Masukkan minimal SSD (GB, misal 512): "))
+BUDGET   = int(input("Masukkan budget maksimal (Rupiah, misal 10000000): "))
+MIN_RAM  = int(input("Masukkan minimal RAM (GB, misal 8): "))
+MIN_SSD  = int(input("Masukkan minimal SSD (GB, misal 512): "))
+CARI_CPU = input("Cari keyword CPU (opsional, lewati dengan Enter, misal 'i5' atau 'Ryzen 5'): ").lower()
 print("-" * 40)
 
 # 2. Baca dataset
@@ -37,24 +38,29 @@ for laptop in semua_laptop:
     # Filter spesifikasi minimum sebelum masuk DP
     if laptop['ram'] < MIN_RAM or laptop['ssd'] < MIN_SSD:
         continue
+        
+    if CARI_CPU and CARI_CPU not in laptop['cpu'].lower():
+        continue
 
     bobot = laptop['harga'] // UNIT   # bobot laptop dalam satuan unit
     nilai = laptop['skor']            # nilai = skor utilitas
 
-    # Iterasi mundur (khas 0/1 Knapsack) agar tiap laptop hanya dipakai 1x
+    # Iterasi untuk DP 1 Barang (karena user hanya butuh 1 laptop)
+    # Membandingkan apakah skor laptop ini lebih baik dari yang sudah ada di budget b
     for b in range(W, bobot - 1, -1):
-        if dp[b - bobot] + nilai > dp[b]:
-            dp[b]       = dp[b - bobot] + nilai
+        if nilai > dp[b]:
+            dp[b]       = nilai
             dp_pilih[b] = laptop
 
 # 4. Ambil hasil: laptop terpilih pada kapasitas penuh (W)
 rekomendasi = dp_pilih[W]
 
 # 5. Tampilkan Hasil
-print("\n=== REKOMENDASI LAPTOP TERBAIK (DYNAMIC PROGRAMMING) ===")
+print("\n=== REKOMENDASI LAPTOP TERBAIK SESUAI BUDGET (DYNAMIC PROGRAMMING) ===")
 if rekomendasi:
     print(f"Nama Laptop   : {rekomendasi['nama']}")
     print(f"Harga         : Rp {rekomendasi['harga']:,}")
+    print(f"Sisa Budget   : Rp {BUDGET - rekomendasi['harga']:,}")
     print(f"Spesifikasi   : CPU -> {rekomendasi['cpu']}")
     print(f"                RAM -> {rekomendasi['ram']} GB")
     print(f"                SSD -> {rekomendasi['ssd']} GB")
