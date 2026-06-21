@@ -175,8 +175,14 @@ def main():
     df = pd.DataFrame(scraped_data).head(TARGET_COUNT)
     df.insert(0, "ID", range(1, len(df) + 1))
     
-    df[["ID", "Nama_Laptop", "Harga_Rp", "Skor_Utilitas"]].to_csv("dataset_laptop.csv", index=False, encoding="utf-8")
-    df.to_csv("dataset_laptop_lengkap.csv", index=False, encoding="utf-8")
+    import os
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    csv_path_1 = os.path.join(BASE_DIR, "dataset_laptop.csv")
+    csv_path_2 = os.path.join(BASE_DIR, "dataset_laptop_lengkap.csv")
+    
+    df[["ID", "Nama_Laptop", "Harga_Rp", "Skor_Utilitas"]].to_csv(csv_path_1, index=False, encoding="utf-8")
+    df.to_csv(csv_path_2, index=False, encoding="utf-8")
     print("Selesai! File 'dataset_laptop.csv' dan 'dataset_laptop_lengkap.csv' berhasil diperbarui.")
 
 if __name__ == "__main__":

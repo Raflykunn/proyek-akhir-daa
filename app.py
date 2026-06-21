@@ -2,15 +2,19 @@ import csv
 import time
 import threading
 import subprocess
+import os
 from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, 'dataset_laptop_lengkap.csv')
 
 IS_SCRAPING = False
 
 def load_data():
     laptops = []
-    with open('dataset_laptop_lengkap.csv', mode='r', encoding='utf-8') as file:
+    with open(DATA_PATH, mode='r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         for row in reader:
             laptops.append({
@@ -135,7 +139,8 @@ def run_scraper_bg():
     global IS_SCRAPING
     IS_SCRAPING = True
     try:
-        subprocess.run(['python', 'scraper.py'])
+        scraper_path = os.path.join(BASE_DIR, 'scraper.py')
+        subprocess.run(['python', scraper_path])
     finally:
         IS_SCRAPING = False
 
