@@ -1,8 +1,12 @@
 import csv
 import time
+import threading
+import subprocess
 from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
+
+IS_SCRAPING = False
 
 def load_data():
     laptops = []
@@ -19,7 +23,27 @@ def load_data():
             })
     return laptops
 
-def run_dp(budget, min_ram, min_ssd, cari_cpu):
+def get_form_options():
+    try:
+        laptops = load_data()
+    except FileNotFoundError:
+        return {"min_price": 0, "rams": [], "ssds": [], "cpus": []}
+        
+    min_price = min((laptop['harga'] for laptop in laptops), default=0)
+    rams = sorted(list(set(laptop['ram'] for laptop in laptops)))
+    ssds = sorted(list(set(laptop['ssd'] for laptop in laptops)))
+    
+    cpu_keywords = ["Core i3", "Core i5", "Core i7", "Core i9", "Core Ultra 5", "Core Ultra 7", "Ryzen 3", "Ryzen 5", "Ryzen 7", "Ryzen 9", "Celeron", "Snapdragon", "Athlon"]
+    found_cpus = set()
+    for laptop in laptops:
+        for kw in cpu_keywords:
+            if kw.lower() in laptop['cpu'].lower():
+                found_cpus.add(kw)
+    cpus = sorted(list(found_cpus))
+    
+    return {"min_price": min_price, "rams": rams, "ssds": ssds, "cpus": cpus}
+
+def run_dp(budget, selected_rams, selected_ssds, selected_cpus):
     laptops = load_data()
     UNIT = 100_000
     W = budget // UNIT
@@ -30,10 +54,13 @@ def run_dp(budget, min_ram, min_ssd, cari_cpu):
     start_time = time.perf_counter()
     
     for laptop in laptops:
-        if laptop['ram'] < min_ram or laptop['ssd'] < min_ssd:
+        if selected_rams and laptop['ram'] not in selected_rams:
             continue
-        if cari_cpu and cari_cpu not in laptop['cpu'].lower():
+        if selected_ssds and laptop['ssd'] not in selected_ssds:
             continue
+        if selected_cpus:
+            if not any(cpu_kw.lower() in laptop['cpu'].lower() for cpu_kw in selected_cpus):
+                continue
             
         bobot = laptop['harga'] // UNIT
         nilai = laptop['skor']
@@ -52,17 +79,23 @@ def run_dp(budget, min_ram, min_ssd, cari_cpu):
         'waktu_eksekusi': (end_time - start_time) * 1000 # in ms
     }
 
-def run_greedy(budget, min_ram, min_ssd, cari_cpu):
+def run_greedy(budget, selected_rams, selected_ssds, selected_cpus):
     laptops = load_data()
     laptop_layak = []
     
     start_time = time.perf_counter()
     
     for laptop in laptops:
-        if laptop['harga'] <= budget and laptop['ram'] >= min_ram and laptop['ssd'] >= min_ssd:
-            if cari_cpu and cari_cpu not in laptop['cpu'].lower():
+        if laptop['harga'] > budget:
+            continue
+        if selected_rams and laptop['ram'] not in selected_rams:
+            continue
+        if selected_ssds and laptop['ssd'] not in selected_ssds:
+            continue
+        if selected_cpus:
+            if not any(cpu_kw.lower() in laptop['cpu'].lower() for cpu_kw in selected_cpus):
                 continue
-            laptop_layak.append(laptop)
+        laptop_layak.append(laptop)
             
     rekomendasi = None
     if laptop_layak:
@@ -79,23 +112,58 @@ def run_greedy(budget, min_ram, min_ssd, cari_cpu):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    options = get_form_options()
+    return render_template('index.html', options=options)
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
     data = request.json
     budget = int(data.get('budget', 0))
-    min_ram = int(data.get('min_ram', 0))
-    min_ssd = int(data.get('min_ssd', 0))
-    cari_cpu = data.get('cari_cpu', '').lower()
+    selected_rams = [int(r) for r in data.get('rams', [])]
+    selected_ssds = [int(s) for s in data.get('ssds', [])]
+    selected_cpus = data.get('cpus', [])
     
-    res_dp = run_dp(budget, min_ram, min_ssd, cari_cpu)
-    res_greedy = run_greedy(budget, min_ram, min_ssd, cari_cpu)
+    res_dp = run_dp(budget, selected_rams, selected_ssds, selected_cpus)
+    res_greedy = run_greedy(budget, selected_rams, selected_ssds, selected_cpus)
     
     return jsonify({
         'dp': res_dp,
         'greedy': res_greedy
     })
+
+def run_scraper_bg():
+    global IS_SCRAPING
+    IS_SCRAPING = True
+    try:
+        subprocess.run(['python', 'scraper.py'])
+    finally:
+        IS_SCRAPING = False
+
+@app.route('/data')
+def data():
+    try:
+        laptops = load_data()
+    except FileNotFoundError:
+        laptops = []
+    return render_template('data.html', laptops=laptops)
+
+@app.route('/analysis')
+def analysis():
+    return render_template('analysis.html')
+
+@app.route('/scrape', methods=['POST'])
+def scrape():
+    global IS_SCRAPING
+    if IS_SCRAPING:
+        return jsonify({"message": "Proses scraping sedang berjalan."}), 400
+        
+    thread = threading.Thread(target=run_scraper_bg)
+    thread.start()
+    return jsonify({"message": "Proses scraping dimulai. Silakan tunggu sekitar 5-10 menit. Anda bisa melakukan aktivitas lain."})
+
+@app.route('/scrape-status', methods=['GET'])
+def scrape_status():
+    return jsonify({"is_scraping": IS_SCRAPING})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
