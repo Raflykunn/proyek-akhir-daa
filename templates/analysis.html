@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Rekomendasi Laptop - Analisis Kompleksitas{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-5xl mx-auto px-6 py-16 lg:py-24">
+    <div class="mb-16 border-b border-neutral-200 pb-10">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 mb-4 leading-tight">Analisis<br>Algoritma.</h1>
+        <p class="text-neutral-500 text-lg max-w-2xl leading-relaxed">Perbandingan komprehensif antara kompleksitas waktu dan efisiensi memori antara metode Dynamic Programming dan pendekatan Greedy.</p>
+    </div>
+
+    <div class="space-y-16 lg:space-y-24">
+        
+        <!-- DP Analysis -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+            <div class="md:col-span-5 lg:col-span-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-neutral-900 text-white text-xs font-bold uppercase tracking-widest rounded-sm mb-4">Metode 01</div>
+                <h2 class="text-2xl font-bold text-neutral-900 tracking-tight leading-snug">Dynamic<br>Programming<br>(0/1 Knapsack)</h2>
+            </div>
+            <div class="md:col-span-7 lg:col-span-8 space-y-6">
+                <p class="text-neutral-600 leading-relaxed text-lg">
+                    Algoritma Dynamic Programming mengevaluasi semua kemungkinan kombinasi secara terstruktur untuk menjamin penemuan solusi yang <strong class="text-neutral-900 font-semibold">paling optimal secara global</strong> (skor utilitas tertinggi dalam batas budget).
+                </p>
+                
+                <div class="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm flex flex-col md:flex-row gap-6 items-center md:items-start">
+                    <div class="flex-shrink-0 bg-neutral-50 p-4 rounded-lg border border-neutral-100 text-center min-w-[140px]">
+                        <span class="block text-[10px] uppercase tracking-wider text-neutral-500 mb-1 font-semibold">Time Complexity</span>
+                        <span class="font-mono text-2xl font-bold text-neutral-900">O(N &times; W)</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-neutral-600 list-disc list-outside ml-4">
+                        <li><strong class="text-neutral-900">N:</strong> Jumlah total laptop yang memenuhi kriteria minimum (RAM, SSD, CPU).</li>
+                        <li><strong class="text-neutral-900">W:</strong> Kapasitas budget setelah disesuaikan dengan skala <em>unit</em> penyederhanaan (misal: 1 unit = Rp100.000).</li>
+                    </ul>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                    <div>
+                        <h4 class="text-sm font-bold text-neutral-900 uppercase tracking-wide mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Kelebihan
+                        </h4>
+                        <p class="text-sm text-neutral-600 leading-relaxed">Menghasilkan solusi yang pasti optimal secara matematis untuk satu set dataset tertentu.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-neutral-900 uppercase tracking-wide mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            Kekurangan
+                        </h4>
+                        <p class="text-sm text-neutral-600 leading-relaxed">Jika budget ($W$) sangat besar dan jumlah barang ($N$) membludak, konsumsi memori dan eksekusi memburuk drastis (Pseudo-polynomial).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-neutral-200"></div>
+
+        <!-- Greedy Analysis -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+            <div class="md:col-span-5 lg:col-span-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-neutral-200 text-neutral-800 text-xs font-bold uppercase tracking-widest rounded-sm mb-4">Metode 02</div>
+                <h2 class="text-2xl font-bold text-neutral-900 tracking-tight leading-snug">Greedy<br>Algorithm</h2>
+            </div>
+            <div class="md:col-span-7 lg:col-span-8 space-y-6">
+                <p class="text-neutral-600 leading-relaxed text-lg">
+                    Algoritma Greedy melakukan pemilihan berdasarkan nilai optimal lokal pada setiap langkah. Sistem menyeleksi laptop yang masuk kriteria lalu mengurutkannya berdasarkan Skor Utilitas tertinggi.
+                </p>
+                
+                <div class="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm flex flex-col md:flex-row gap-6 items-center md:items-start">
+                    <div class="flex-shrink-0 bg-neutral-50 p-4 rounded-lg border border-neutral-100 text-center min-w-[140px]">
+                        <span class="block text-[10px] uppercase tracking-wider text-neutral-500 mb-1 font-semibold">Time Complexity</span>
+                        <span class="font-mono text-2xl font-bold text-neutral-900">O(N log N)</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-neutral-600 list-disc list-outside ml-4">
+                        <li>Fase penyaringan awal (filtering data kotor) memakan waktu <strong class="text-neutral-900">O(N)</strong>.</li>
+                        <li>Fase pengurutan (sorting Timsort bawaan Python) memakan waktu <strong class="text-neutral-900">O(M log M)</strong> dimana $M$ adalah subset barang yang lolos filter ($M \le N$).</li>
+                    </ul>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                    <div>
+                        <h4 class="text-sm font-bold text-neutral-900 uppercase tracking-wide mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Kelebihan
+                        </h4>
+                        <p class="text-sm text-neutral-600 leading-relaxed">Sangat ringan dan super cepat. Tidak terpengaruh seberapa besar rentang budget ($W$) yang diinput.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-neutral-900 uppercase tracking-wide mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            Kekurangan
+                        </h4>
+                        <p class="text-sm text-neutral-600 leading-relaxed">Menghasilkan <em>local optimum</em> yang belum tentu presisi (meski rata-rata sudah cukup memuaskan).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="bg-neutral-900 text-white rounded-2xl p-8 lg:p-12 shadow-lg mt-8 relative overflow-hidden">
+            <!-- Decorative circle -->
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl"></div>
+            
+            <h2 class="text-2xl font-bold mb-4 tracking-tight">Kesimpulan Eksekutif</h2>
+            <p class="text-neutral-300 leading-relaxed text-lg max-w-3xl relative z-10">
+                Gunakan <strong class="text-white font-semibold">Dynamic Programming</strong> jika Anda ingin hasil mutlak sempurna secara matematis dengan dataset kecil menengah. Sebaliknya, gunakan <strong class="text-white font-semibold">Greedy Algorithm</strong> untuk melayani miliaran data komersial raksasa di mana respons <em>real-time</em> merupakan sebuah keharusan di dalam arsitektur berskala industri.
+            </p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

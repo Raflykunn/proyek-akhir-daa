@@ -1,242 +1,231 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Rekomendasi Laptop</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fafafa; /* Off-white premium background */
-            color: #171717; /* High contrast text, not pure black */
-        }
-        
-        /* Clean Flat Design - 1px borders, no muddy shadows */
-        .card-flat {
-            background-color: #ffffff;
-            border: 1px solid #e5e5e5;
-            border-radius: 0.5rem; /* rounded-md */
-        }
-        
-        .input-flat {
-            background-color: #fafafa;
-            border: 1px solid #d4d4d4;
-            border-radius: 0.375rem; /* rounded-md */
-            color: #171717;
-            transition: all 200ms ease-out;
-        }
-        
-        .input-flat:focus {
-            outline: none;
-            border-color: #171717; /* Solid black accent on focus */
-            background-color: #ffffff;
-        }
+{% extends 'base.html' %}
 
-        .btn-solid {
-            background-color: #171717;
-            color: #ffffff;
-            border-radius: 0.375rem;
-            transition: all 200ms ease-out;
-            font-weight: 500;
-        }
+{% block title %}Rekomendasi Laptop - Home{% endblock %}
 
-        .btn-solid:hover {
-            background-color: #404040;
-        }
-
-        .tag-subtle {
-            background-color: #f5f5f5;
-            border: 1px solid #e5e5e5;
-            color: #525252;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-    </style>
-</head>
-<body class="min-h-screen p-6 md:p-12 flex flex-col items-center">
+{% block content %}
+<div class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-12 lg:pt-20 px-6 pb-24">
     
-    <!-- Header: Clean Typography, generous spacing -->
-    <header class="w-full max-w-5xl mb-16 mt-8">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 mb-4">
-            Rekomendasi Laptop.
-        </h1>
-        <p class="text-neutral-500 text-lg leading-relaxed max-w-2xl">
-            Perbandingan algoritma pencarian optimalisasi budget menggunakan Dynamic Programming (0/1 Knapsack) dan pendekatan Greedy.
-        </p>
-    </header>
+    <!-- Left Sidebar: Header & Form (Sticky) -->
+    <div class="lg:col-span-4 flex flex-col gap-10 lg:sticky lg:top-8 h-fit">
+        <header>
+            <h1 class="text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 mb-5 leading-[1.1]">
+                Temukan <br>Kandidat Terbaik.
+            </h1>
+            <p class="text-neutral-500 text-base leading-relaxed">
+                Tentukan batasan budget dan kriteria Anda. Sistem membandingkan dua algoritma untuk mendapatkan skor utilitas laptop paling optimal.
+            </p>
+        </header>
 
-    <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-10">
-        
-        <!-- Input Form (Flat Design) -->
-        <div class="lg:col-span-4 card-flat p-8 h-fit">
-            <h2 class="text-xl font-semibold mb-6 tracking-tight text-neutral-900">Kriteria Spesifikasi</h2>
-            <form id="recForm" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-neutral-600 mb-2">Budget Maksimal (Rp)</label>
-                    <input type="number" id="budget" required class="w-full input-flat px-4 py-2.5" placeholder="Contoh: 10000000">
-                </div>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-neutral-600 mb-2">Min. RAM (GB)</label>
-                        <input type="number" id="min_ram" required class="w-full input-flat px-4 py-2.5" placeholder="8">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-neutral-600 mb-2">Min. SSD (GB)</label>
-                        <input type="number" id="min_ssd" required class="w-full input-flat px-4 py-2.5" placeholder="512">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-neutral-600 mb-2">Keyword CPU <span class="text-neutral-400 font-normal">(Opsional)</span></label>
-                    <input type="text" id="cari_cpu" class="w-full input-flat px-4 py-2.5" placeholder="Contoh: Ryzen">
-                </div>
-                
-                <button type="submit" class="w-full btn-solid py-3 px-4 mt-2">
-                    Cari Rekomendasi
-                </button>
-            </form>
-        </div>
-
-        <!-- Results Area -->
-        <div class="lg:col-span-8 flex flex-col">
+        <form id="recForm" class="space-y-6 bg-white p-6 rounded-xl border border-neutral-200 shadow-sm">
+            <div>
+                <label class="block text-sm font-semibold text-neutral-800 mb-2">Budget Maksimal (Rp)</label>
+                <input type="number" id="budget" required min="{{ options.min_price }}" 
+                       class="w-full bg-[#fafafa] border border-neutral-300 rounded-md px-4 py-3 text-neutral-900 focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all duration-200" 
+                       placeholder="Minimal: {{ options.min_price }}">
+                <p class="text-xs text-neutral-500 mt-2">Harga terendah di dataset: <span class="format-rp font-medium">{{ options.min_price }}</span></p>
+            </div>
             
-            <!-- Loading Indicator -->
-            <div id="loading" class="hidden flex justify-center items-center py-24">
-                <span class="text-neutral-500 font-medium tracking-wide">Memproses algoritma...</span>
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="card-flat p-12 text-center h-full flex flex-col justify-center items-center">
-                <h3 class="text-lg font-medium text-neutral-900 mb-2">Belum Ada Pencarian</h3>
-                <p class="text-neutral-500 text-sm">Silakan masukkan kriteria di panel sebelah kiri.</p>
-            </div>
-
-            <!-- Results Grid -->
-            <div id="resultsGrid" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                
-                <!-- DP Result Card -->
-                <div class="card-flat p-8 relative hover:border-neutral-400 transition-all duration-200 ease-out">
-                    <div class="mb-8">
-                        <span class="tag-subtle">Dynamic Programming</span>
-                    </div>
-                    <div id="dp_content" class="space-y-6">
-                        <!-- Injected via JS -->
-                    </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-neutral-800 mb-2">RAM (GB)</label>
+                    <select id="ram_select" class="w-full bg-[#fafafa] border border-neutral-300 rounded-md px-4 py-3 text-neutral-900 focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all duration-200 cursor-pointer">
+                        <option value="">Semua</option>
+                        {% for ram in options.rams %}
+                        <option value="{{ ram }}">{{ ram }} GB</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
-                <!-- Greedy Result Card -->
-                <div class="card-flat p-8 relative hover:border-neutral-400 transition-all duration-200 ease-out">
-                    <div class="mb-8">
-                        <span class="tag-subtle">Greedy Algorithm</span>
-                    </div>
-                    <div id="greedy_content" class="space-y-6">
-                        <!-- Injected via JS -->
-                    </div>
+                <div>
+                    <label class="block text-sm font-semibold text-neutral-800 mb-2">SSD (GB)</label>
+                    <select id="ssd_select" class="w-full bg-[#fafafa] border border-neutral-300 rounded-md px-4 py-3 text-neutral-900 focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all duration-200 cursor-pointer">
+                        <option value="">Semua</option>
+                        {% for ssd in options.ssds %}
+                        <option value="{{ ssd }}">{{ ssd }} GB</option>
+                        {% endfor %}
+                    </select>
                 </div>
-
             </div>
-        </div>
+            
+            <div>
+                <label class="block text-sm font-semibold text-neutral-800 mb-2">Pilih CPU</label>
+                <select id="cpu_select" class="w-full bg-[#fafafa] border border-neutral-300 rounded-md px-4 py-3 text-neutral-900 focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all duration-200 cursor-pointer">
+                    <option value="">Semua Merek / Tipe</option>
+                    {% for cpu in options.cpus %}
+                    <option value="{{ cpu }}">{{ cpu }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="w-full bg-neutral-900 text-white font-medium rounded-md py-3 px-4 hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 transition-all duration-200 mt-2">
+                Jalankan Algoritma
+            </button>
+        </form>
     </div>
 
-    <script>
-        document.getElementById('recForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+    <!-- Right Content: Results Area -->
+    <div class="lg:col-span-8 flex flex-col pt-2 lg:pl-8">
+        
+        <!-- Empty State -->
+        <div id="emptyState" class="h-full min-h-[50vh] flex flex-col items-center justify-center border border-dashed border-neutral-300 rounded-xl bg-neutral-50/50">
+            <svg class="w-12 h-12 text-neutral-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            <h3 class="text-lg font-medium text-neutral-600 mb-1">Siap Menganalisis</h3>
+            <p class="text-neutral-400 text-sm">Pilih kriteria di panel sebelah kiri untuk memulai.</p>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="hidden h-full min-h-[50vh] flex flex-col items-center justify-center">
+            <svg class="animate-spin h-8 w-8 text-neutral-900 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span class="text-neutral-500 font-medium tracking-wide">Menghitung matriks Knapsack...</span>
+        </div>
+
+        <!-- Results Grid (Stacked Magazine Style) -->
+        <div id="resultsGrid" class="hidden flex flex-col gap-16">
             
-            const budget = document.getElementById('budget').value;
-            const min_ram = document.getElementById('min_ram').value;
-            const min_ssd = document.getElementById('min_ssd').value;
-            const cari_cpu = document.getElementById('cari_cpu').value;
+            <!-- DP Result Section -->
+            <div class="relative pl-6 lg:pl-10 border-l-2 border-neutral-900">
+                <div class="absolute -left-3 top-0 bg-neutral-900 text-white text-[10px] font-bold px-2 py-1 rounded-sm tracking-widest uppercase">01</div>
+                <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-2">
+                    <h3 class="text-xl font-bold text-neutral-900 tracking-tight">Dynamic Programming</h3>
+                    <span class="text-sm text-neutral-500 font-mono bg-neutral-100 px-3 py-1 rounded-md" id="dp_time"></span>
+                </div>
+                <div id="dp_content"></div>
+            </div>
 
-            document.getElementById('emptyState').classList.add('hidden');
-            document.getElementById('resultsGrid').classList.add('hidden');
-            document.getElementById('loading').classList.remove('hidden');
+            <!-- Divider -->
+            <div class="w-full h-px bg-neutral-200"></div>
 
-            try {
-                const response = await fetch('/recommend', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ budget, min_ram, min_ssd, cari_cpu })
-                });
+            <!-- Greedy Result Section -->
+            <div class="relative pl-6 lg:pl-10 border-l-2 border-neutral-300">
+                <div class="absolute -left-3 top-0 bg-neutral-300 text-neutral-800 text-[10px] font-bold px-2 py-1 rounded-sm tracking-widest uppercase">02</div>
+                <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-2">
+                    <h3 class="text-xl font-bold text-neutral-500 tracking-tight">Greedy Algorithm</h3>
+                    <span class="text-sm text-neutral-400 font-mono bg-white border border-neutral-200 px-3 py-1 rounded-md" id="greedy_time"></span>
+                </div>
+                <div id="greedy_content" class="opacity-80 hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
 
-                const data = await response.json();
-                
-                renderResult('dp', data.dp);
-                renderResult('greedy', data.greedy);
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-                document.getElementById('loading').classList.add('hidden');
-                document.getElementById('resultsGrid').classList.remove('hidden');
-                
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Terjadi kesalahan saat menghubungi server.");
-                document.getElementById('loading').classList.add('hidden');
-                document.getElementById('emptyState').classList.remove('hidden');
-            }
-        });
+{% block scripts %}
+<script>
+    document.getElementById('recForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const budget = document.getElementById('budget').value;
+        const ramVal = document.getElementById('ram_select').value;
+        const ssdVal = document.getElementById('ssd_select').value;
+        const cpuVal = document.getElementById('cpu_select').value;
+        
+        const rams = ramVal ? [ramVal] : [];
+        const ssds = ssdVal ? [ssdVal] : [];
+        const cpus = cpuVal ? [cpuVal] : [];
 
-        function formatRupiah(number) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        document.getElementById('emptyState').classList.add('hidden');
+        document.getElementById('resultsGrid').classList.add('hidden');
+        document.getElementById('loading').classList.remove('hidden');
+        document.getElementById('loading').classList.add('flex');
+
+        try {
+            const response = await fetch('/recommend', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ budget, rams, ssds, cpus })
+            });
+
+            const data = await response.json();
+            
+            document.getElementById('dp_time').textContent = `${data.dp.waktu_eksekusi.toFixed(2)} ms`;
+            document.getElementById('greedy_time').textContent = `${data.greedy.waktu_eksekusi.toFixed(2)} ms`;
+            
+            renderResult('dp', data.dp);
+            renderResult('greedy', data.greedy);
+
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('loading').classList.remove('flex');
+            document.getElementById('resultsGrid').classList.remove('hidden');
+            document.getElementById('resultsGrid').classList.add('flex');
+            
+        } catch (error) {
+            console.error("Error:", error);
+            showToast("Terjadi kesalahan saat menghubungi server.", "error");
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('loading').classList.remove('flex');
+            document.getElementById('emptyState').classList.remove('hidden');
+            document.getElementById('emptyState').classList.add('flex');
         }
+    });
 
-        function renderResult(type, data) {
-            const container = document.getElementById(`${type}_content`);
+    function formatRupiah(number) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+    }
 
-            if (!data.rekomendasi) {
-                container.innerHTML = `
-                    <div class="py-6 text-center border border-dashed border-neutral-300 rounded-md">
-                        <p class="text-neutral-500 text-sm">Tidak ada laptop sesuai kriteria.</p>
-                        <p class="text-neutral-400 text-xs mt-2">Waktu: ${data.waktu_eksekusi.toFixed(2)} ms</p>
-                    </div>`;
-                return;
-            }
+    // Format mata uang pada label informasi terendah saat load
+    document.querySelectorAll('.format-rp').forEach(el => {
+        const val = parseInt(el.textContent);
+        if(!isNaN(val)) {
+            el.textContent = formatRupiah(val);
+        }
+    });
 
-            const laptop = data.rekomendasi;
-            const budget = parseInt(document.getElementById('budget').value);
-            const sisa = budget - laptop.harga;
+    function renderResult(type, data) {
+        const container = document.getElementById(`${type}_content`);
 
+        if (!data.rekomendasi) {
             container.innerHTML = `
+                <div class="py-8 px-6 text-center border border-dashed border-neutral-300 rounded-lg bg-neutral-50">
+                    <p class="text-neutral-500">Tidak ada laptop yang memenuhi kriteria pencarian.</p>
+                </div>`;
+            return;
+        }
+
+        const laptop = data.rekomendasi;
+        const budget = parseInt(document.getElementById('budget').value);
+        const sisa = budget - laptop.harga;
+
+        container.innerHTML = `
+            <div class="flex flex-col gap-6">
+                <!-- Title & Price Area -->
                 <div>
-                    <h4 class="text-xl font-bold text-neutral-900 mb-1 tracking-tight leading-snug">${laptop.nama}</h4>
-                    <div class="text-lg font-medium text-neutral-600">${formatRupiah(laptop.harga)}</div>
+                    <h4 class="text-2xl font-bold text-neutral-900 mb-2 leading-snug tracking-tight">${laptop.nama}</h4>
+                    <div class="text-xl font-medium ${type === 'dp' ? 'text-neutral-900' : 'text-neutral-600'}">${formatRupiah(laptop.harga)}</div>
                 </div>
                 
-                <div class="border-t border-b border-neutral-200 py-4 space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="text-neutral-500 text-sm">Sisa Budget</span>
-                        <span class="text-neutral-900 text-sm font-medium">${formatRupiah(sisa)}</span>
+                <!-- Specs Table Style -->
+                <div class="w-full bg-white border border-neutral-200 rounded-lg overflow-hidden">
+                    <div class="grid grid-cols-3 divide-x divide-neutral-200 border-b border-neutral-200 bg-neutral-50">
+                        <div class="p-4 text-center">
+                            <span class="block text-[10px] uppercase tracking-wider text-neutral-500 mb-1">Skor Utilitas</span>
+                            <span class="block text-2xl font-bold text-neutral-900">${laptop.skor}</span>
+                        </div>
+                        <div class="p-4 text-center">
+                            <span class="block text-[10px] uppercase tracking-wider text-neutral-500 mb-1">RAM</span>
+                            <span class="block text-lg font-semibold text-neutral-800">${laptop.ram} GB</span>
+                        </div>
+                        <div class="p-4 text-center">
+                            <span class="block text-[10px] uppercase tracking-wider text-neutral-500 mb-1">SSD</span>
+                            <span class="block text-lg font-semibold text-neutral-800">${laptop.ssd} GB</span>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-start">
-                        <span class="text-neutral-500 text-sm">Processor</span>
-                        <span class="text-neutral-900 text-sm font-medium text-right max-w-[65%]">${laptop.cpu}</span>
+                    
+                    <div class="p-4 flex justify-between items-start border-b border-neutral-100">
+                        <span class="text-sm font-medium text-neutral-500 w-1/3">Processor</span>
+                        <span class="text-sm font-medium text-neutral-900 w-2/3 text-right leading-relaxed">${laptop.cpu}</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-neutral-500 text-sm">RAM</span>
-                        <span class="text-neutral-900 text-sm font-medium">${laptop.ram} GB</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-neutral-500 text-sm">Storage</span>
-                        <span class="text-neutral-900 text-sm font-medium">${laptop.ssd} GB</span>
+                    
+                    <div class="p-4 flex justify-between items-center bg-neutral-50/50">
+                        <span class="text-sm font-medium text-neutral-500">Sisa Budget</span>
+                        <span class="text-sm font-bold text-green-600">${formatRupiah(sisa)}</span>
                     </div>
                 </div>
-
-                <div class="flex justify-between items-center pt-2">
-                    <span class="text-neutral-500 text-sm">Skor Utilitas</span>
-                    <span class="text-neutral-900 font-bold text-lg">${laptop.skor}</span>
-                </div>
-
-                <div class="mt-6 p-3 bg-neutral-50 rounded-md border border-neutral-200 flex justify-between items-center">
-                    <span class="text-neutral-500 text-xs uppercase tracking-wider font-semibold">Waktu Eksekusi</span>
-                    <span class="font-mono text-neutral-900 text-sm font-medium">${data.waktu_eksekusi.toFixed(2)} ms</span>
-                </div>
-            `;
-        }
-    </script>
-</body>
-</html>
+            </div>
+        `;
+    }
+</script>
+{% endblock %}

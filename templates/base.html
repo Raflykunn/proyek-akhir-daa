@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistem Rekomendasi Laptop{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col bg-[#fafafa] text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
+    <!-- Clean Minimalist Navbar -->
+    <nav class="border-b border-neutral-200 bg-white">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <a href="/" class="font-bold text-2xl tracking-tighter text-neutral-900">Rekomendasi.</a>
+            </div>
+            <div class="flex items-center gap-8">
+                <a href="/" class="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">Beranda</a>
+                <a href="/data" class="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">Dataset Laptop</a>
+                <a href="/analysis" class="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">Analisis Algoritma</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-8 right-8 z-50 flex flex-col gap-3"></div>
+
+    <!-- Global Scraping Indicator -->
+    <div id="scraping-indicator" class="fixed bottom-8 right-8 z-40 hidden items-center gap-3 bg-neutral-900 text-white px-5 py-4 rounded-md border border-neutral-700 shadow-sm transition-all duration-300">
+        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span class="text-sm font-medium tracking-wide">Scraping berjalan...</span>
+    </div>
+
+    <script>
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            // Setup Tailwind classes for toast
+            toast.className = 'bg-neutral-900 text-white px-5 py-4 rounded-md border border-neutral-700 opacity-0 translate-y-4 transition-all duration-300 ease-out flex items-center gap-3 text-sm font-medium';
+            
+            // Icon
+            const iconSvg = type === 'success' 
+                ? `<svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`
+                : `<svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+
+            toast.innerHTML = `${iconSvg} <span>${message}</span>`;
+            container.appendChild(toast);
+            
+            // Trigger animation in
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    toast.classList.remove('opacity-0', 'translate-y-4');
+                    toast.classList.add('opacity-100', 'translate-y-0');
+                });
+            });
+            
+            // Trigger animation out
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300); // Wait for transition
+            }, 6000);
+        }
+
+        let isScrapingNow = false;
+
+        async function checkScrapeStatus() {
+            try {
+                const res = await fetch('/scrape-status');
+                const data = await res.json();
+                const indicator = document.getElementById('scraping-indicator');
+                
+                if (data.is_scraping) {
+                    indicator.classList.remove('hidden');
+                    indicator.classList.add('flex');
+                    isScrapingNow = true;
+                } else {
+                    indicator.classList.add('hidden');
+                    indicator.classList.remove('flex');
+                    if (isScrapingNow) {
+                        isScrapingNow = false;
+                        showToast("Proses scraping telah selesai!", "success");
+                        if (window.location.pathname === '/data') {
+                            setTimeout(() => window.location.reload(), 2000);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error("Gagal mengecek status scraping", err);
+            }
+        }
+
+        setInterval(checkScrapeStatus, 3000);
+        checkScrapeStatus();
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

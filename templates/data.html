@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Rekomendasi Laptop - Semua Data{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-7xl mx-auto px-6 py-12 lg:py-16">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="max-w-2xl">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-3">Dataset Laptop</h1>
+            <p class="text-neutral-500 text-base leading-relaxed">Seluruh data mentah yang telah diekstrak dan dibersihkan dari sumber eksternal. Data ini digunakan sebagai dasar perhitungan rekomendasi algoritma.</p>
+        </div>
+        <div>
+            <button id="btnScrape" class="bg-neutral-900 text-white font-medium rounded-md py-3 px-6 hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                Perbarui Data (Scraping)
+            </button>
+        </div>
+    </div>
+
+    <div class="w-full border border-neutral-200 rounded-xl bg-white overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm whitespace-nowrap">
+                <thead class="bg-neutral-50 border-b border-neutral-200">
+                    <tr>
+                        <th class="px-6 py-4 font-semibold text-neutral-600 text-center w-16">No</th>
+                        <th class="px-6 py-4 font-semibold text-neutral-600">Nama Laptop</th>
+                        <th class="px-6 py-4 font-semibold text-neutral-600 text-right">Harga (Rp)</th>
+                        <th class="px-6 py-4 font-semibold text-neutral-600">Processor</th>
+                        <th class="px-6 py-4 font-semibold text-neutral-600 text-center">RAM</th>
+                        <th class="px-6 py-4 font-semibold text-neutral-600 text-center">SSD</th>
+                        <th class="px-6 py-4 font-semibold text-neutral-600 text-center">Skor Utilitas</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-neutral-100">
+                    {% for laptop in laptops %}
+                    <tr class="hover:bg-neutral-50/50 transition-colors">
+                        <td class="px-6 py-4 text-center text-neutral-400">{{ loop.index }}</td>
+                        <td class="px-6 py-4 font-medium text-neutral-900 whitespace-normal min-w-[200px]">{{ laptop.nama }}</td>
+                        <td class="px-6 py-4 text-right text-neutral-600 font-mono format-rp">{{ laptop.harga }}</td>
+                        <td class="px-6 py-4 text-neutral-600">{{ laptop.cpu }}</td>
+                        <td class="px-6 py-4 text-center text-neutral-600">{{ laptop.ram }} GB</td>
+                        <td class="px-6 py-4 text-center text-neutral-600">{{ laptop.ssd }} GB</td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-neutral-100 text-neutral-700 border border-neutral-200">
+                                {{ laptop.skor }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="px-6 py-16 text-center text-neutral-500 border-t border-dashed border-neutral-200">
+                            Belum ada data tersedia. Silakan jalankan proses scraping.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Format mata uang
+    document.querySelectorAll('.format-rp').forEach(el => {
+        const value = parseInt(el.textContent);
+        if (!isNaN(value)) {
+            el.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(value);
+        }
+    });
+
+    // Handle scraping button
+    document.getElementById('btnScrape').addEventListener('click', async () => {
+        const btn = document.getElementById('btnScrape');
+        btn.disabled = true;
+        btn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Memulai...`;
+        
+        try {
+            const res = await fetch('/scrape', { method: 'POST' });
+            const data = await res.json();
+            
+            showToast(data.message, 'info');
+            
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Perbarui Data (Scraping)`;
+            }, 3000);
+            
+        } catch (err) {
+            console.error(err);
+            showToast("Gagal memulai proses scraping.", "error");
+            btn.disabled = false;
+            btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Perbarui Data (Scraping)`;
+        }
+    });
+</script>
+{% endblock %}
